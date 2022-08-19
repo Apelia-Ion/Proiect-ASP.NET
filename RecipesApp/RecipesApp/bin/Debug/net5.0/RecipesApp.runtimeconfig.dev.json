@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\Apelia\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Apelia\\.nuget\\packages"
+    ]
+  }
+}

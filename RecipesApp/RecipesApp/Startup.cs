@@ -2,11 +2,13 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using RecipesApp.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +34,9 @@ namespace RecipesApp
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "RecipesApp", Version = "v1" });
             });
+
+            // add db context
+            services.AddDbContext<RecipesAppContext>(options => options.UseSqlServer(@"Server=(localdb)\\MSSQLLocalDB;Initial Catalog=RecipesDatabase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

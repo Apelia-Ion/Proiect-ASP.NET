@@ -9,7 +9,12 @@ namespace RecipesApp.Entities
 {
     public class RecipesAppContext : DbContext
     {
-        public RecipesAppContext (DbContextOptions<RecipesAppContext> options) : base(options) { }
+        
+        public RecipesAppContext(DbContextOptions<RecipesAppContext> options) : base(options) { }
+        //public RecipesAppContext() { }
+        //public RecipesAppContext(DbContextOptions<RecipesAppContext> options) : base(options) { }
+        //public RecipesAppContext(DbContextOptions options) : base(options) {}
+
         public DbSet<Adress> Adresses { get; set; }
 
     }
