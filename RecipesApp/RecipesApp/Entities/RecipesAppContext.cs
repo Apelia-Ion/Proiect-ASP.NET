@@ -9,6 +9,7 @@ namespace RecipesApp.Entities
 {
     public class RecipesAppContext : DbContext
     {
+        public RecipesAppContext (DbContextOptions<RecipesAppContext> options) : base(options) { }
         public DbSet<Adress> Adresses { get; set; }
 
     }

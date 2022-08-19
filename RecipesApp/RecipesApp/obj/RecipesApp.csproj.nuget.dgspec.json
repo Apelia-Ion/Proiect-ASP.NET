@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GitHub Repos\\RecipesApp\\RecipesApp\\RecipesApp.csproj": {}
+    "D:\\GitHub Repos\\Proiect-ASP.NET\\RecipesApp\\RecipesApp\\RecipesApp.csproj": {}
   },
   "projects": {
-    "D:\\GitHub Repos\\RecipesApp\\RecipesApp\\RecipesApp.csproj": {
+    "D:\\GitHub Repos\\Proiect-ASP.NET\\RecipesApp\\RecipesApp\\RecipesApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub Repos\\RecipesApp\\RecipesApp\\RecipesApp.csproj",
+        "projectUniqueName": "D:\\GitHub Repos\\Proiect-ASP.NET\\RecipesApp\\RecipesApp\\RecipesApp.csproj",
         "projectName": "RecipesApp",
-        "projectPath": "D:\\GitHub Repos\\RecipesApp\\RecipesApp\\RecipesApp.csproj",
+        "projectPath": "D:\\GitHub Repos\\Proiect-ASP.NET\\RecipesApp\\RecipesApp\\RecipesApp.csproj",
         "packagesPath": "C:\\Users\\Apelia\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub Repos\\RecipesApp\\RecipesApp\\obj\\",
+        "outputPath": "D:\\GitHub Repos\\Proiect-ASP.NET\\RecipesApp\\RecipesApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Apelia\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,22 +40,6 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
-            "Microsoft.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[5.0.17, )"
-            },
-            "Microsoft.EntityFrameworkCore.Relational": {
-              "target": "Package",
-              "version": "[5.0.17, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[5.0.17, )"
-            },
-            "Microsoft.EntityFrameworkCore.Tools": {
-              "target": "Package",
-              "version": "[5.0.17, )"
-            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"
