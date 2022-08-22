@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RecipesApp.Entities;
 
 namespace RecipesApp.Migrations
 {
     [DbContext(typeof(RecipesAppContext))]
-    partial class RecipesAppContextModelSnapshot : ModelSnapshot
+    [Migration("20220822141034_Tables")]
+    partial class Tables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,21 +57,6 @@ namespace RecipesApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Chef");
-                });
-
-            modelBuilder.Entity("RecipesApp.Entities.ChefRecipe", b =>
-                {
-                    b.Property<string>("ChefId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("RecipeId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("ChefId", "RecipeId");
-
-                    b.HasIndex("RecipeId");
-
-                    b.ToTable("ChefRecipe");
                 });
 
             modelBuilder.Entity("RecipesApp.Entities.Recipe", b =>
@@ -129,25 +116,6 @@ namespace RecipesApp.Migrations
                     b.Navigation("Chef");
                 });
 
-            modelBuilder.Entity("RecipesApp.Entities.ChefRecipe", b =>
-                {
-                    b.HasOne("RecipesApp.Entities.Chef", "Chef")
-                        .WithMany("ChefRecipe")
-                        .HasForeignKey("ChefId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("RecipesApp.Entities.Recipe", "Recipe")
-                        .WithMany("ChefRecipe")
-                        .HasForeignKey("RecipeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Chef");
-
-                    b.Navigation("Recipe");
-                });
-
             modelBuilder.Entity("RecipesApp.Entities.Review", b =>
                 {
                     b.HasOne("RecipesApp.Entities.Chef", "Chef")
@@ -166,14 +134,10 @@ namespace RecipesApp.Migrations
             modelBuilder.Entity("RecipesApp.Entities.Chef", b =>
                 {
                     b.Navigation("Address");
-
-                    b.Navigation("ChefRecipe");
                 });
 
             modelBuilder.Entity("RecipesApp.Entities.Recipe", b =>
                 {
-                    b.Navigation("ChefRecipe");
-
                     b.Navigation("Reviews");
                 });
 #pragma warning restore 612, 618

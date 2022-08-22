@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RecipesApp.Entities;
 
 namespace RecipesApp.Migrations
 {
     [DbContext(typeof(RecipesAppContext))]
-    partial class RecipesAppContextModelSnapshot : ModelSnapshot
+    [Migration("20220822113623_AddedReviewsToRecipe")]
+    partial class AddedReviewsToRecipe
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -18,7 +20,7 @@ namespace RecipesApp.Migrations
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("RecipesApp.Entities.Address", b =>
+            modelBuilder.Entity("RecipesApp.Entities.Adress", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -41,7 +43,7 @@ namespace RecipesApp.Migrations
                         .IsUnique()
                         .HasFilter("[ChefId] IS NOT NULL");
 
-                    b.ToTable("Addresses");
+                    b.ToTable("Adresses");
                 });
 
             modelBuilder.Entity("RecipesApp.Entities.Chef", b =>
@@ -57,24 +59,14 @@ namespace RecipesApp.Migrations
                     b.ToTable("Chef");
                 });
 
-            modelBuilder.Entity("RecipesApp.Entities.ChefRecipe", b =>
-                {
-                    b.Property<string>("ChefId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("RecipeId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("ChefId", "RecipeId");
-
-                    b.HasIndex("RecipeId");
-
-                    b.ToTable("ChefRecipe");
-                });
-
             modelBuilder.Entity("RecipesApp.Entities.Recipe", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ChefId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Description")
@@ -83,6 +75,9 @@ namespace RecipesApp.Migrations
                     b.Property<string>("Ingredients")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ReviewId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("Steps")
                         .HasColumnType("nvarchar(max)");
 
@@ -90,6 +85,12 @@ namespace RecipesApp.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ChefId");
+
+                    b.HasIndex("ReviewId")
+                        .IsUnique()
+                        .HasFilter("[ReviewId] IS NOT NULL");
 
                     b.ToTable("Recipes");
                 });
@@ -109,43 +110,37 @@ namespace RecipesApp.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("RecipeId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ChefId");
 
-                    b.HasIndex("RecipeId");
-
                     b.ToTable("Review");
                 });
 
-            modelBuilder.Entity("RecipesApp.Entities.Address", b =>
+            modelBuilder.Entity("RecipesApp.Entities.Adress", b =>
                 {
                     b.HasOne("RecipesApp.Entities.Chef", "Chef")
-                        .WithOne("Address")
-                        .HasForeignKey("RecipesApp.Entities.Address", "ChefId");
+                        .WithOne("Adress")
+                        .HasForeignKey("RecipesApp.Entities.Adress", "ChefId");
 
                     b.Navigation("Chef");
                 });
 
-            modelBuilder.Entity("RecipesApp.Entities.ChefRecipe", b =>
+            modelBuilder.Entity("RecipesApp.Entities.Recipe", b =>
                 {
                     b.HasOne("RecipesApp.Entities.Chef", "Chef")
-                        .WithMany("ChefRecipe")
-                        .HasForeignKey("ChefId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("Recipes")
+                        .HasForeignKey("ChefId");
 
-                    b.HasOne("RecipesApp.Entities.Recipe", "Recipe")
-                        .WithMany("ChefRecipe")
-                        .HasForeignKey("RecipeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("RecipesApp.Entities.Review", "Review")
+                        .WithOne("Recipe")
+                        .HasForeignKey("RecipesApp.Entities.Recipe", "ReviewId");
 
                     b.Navigation("Chef");
 
-                    b.Navigation("Recipe");
+                    b.Navigation("Review");
                 });
 
             modelBuilder.Entity("RecipesApp.Entities.Review", b =>
@@ -154,27 +149,19 @@ namespace RecipesApp.Migrations
                         .WithMany()
                         .HasForeignKey("ChefId");
 
-                    b.HasOne("RecipesApp.Entities.Recipe", "Recipe")
-                        .WithMany("Reviews")
-                        .HasForeignKey("RecipeId");
-
                     b.Navigation("Chef");
-
-                    b.Navigation("Recipe");
                 });
 
             modelBuilder.Entity("RecipesApp.Entities.Chef", b =>
                 {
-                    b.Navigation("Address");
+                    b.Navigation("Adress");
 
-                    b.Navigation("ChefRecipe");
+                    b.Navigation("Recipes");
                 });
 
-            modelBuilder.Entity("RecipesApp.Entities.Recipe", b =>
+            modelBuilder.Entity("RecipesApp.Entities.Review", b =>
                 {
-                    b.Navigation("ChefRecipe");
-
-                    b.Navigation("Reviews");
+                    b.Navigation("Recipe");
                 });
 #pragma warning restore 612, 618
         }
