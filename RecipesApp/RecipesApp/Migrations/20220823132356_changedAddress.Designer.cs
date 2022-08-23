@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RecipesApp.Entities;
 
 namespace RecipesApp.Migrations
 {
     [DbContext(typeof(RecipesAppContext))]
-    partial class RecipesAppContextModelSnapshot : ModelSnapshot
+    [Migration("20220823132356_changedAddress")]
+    partial class changedAddress
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

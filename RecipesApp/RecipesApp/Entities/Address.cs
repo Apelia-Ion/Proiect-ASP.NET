@@ -12,6 +12,7 @@ namespace RecipesApp.Entities
         public string City { get; set; }
         public string Country { get; set; }
         public string Street { get; set; }
+        public int Number { get; set; }
         public string ChefId { get; set; }
         public virtual Chef Chef { get; set; }
 

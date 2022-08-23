@@ -15,10 +15,8 @@ namespace RecipesApp.Entities
     public class RecipesAppContext : DbContext
     {
         
-        public RecipesAppContext(DbContextOptions<RecipesAppContext> options) : base(options) { }
-        //public RecipesAppContext() { }
-        //public RecipesAppContext(DbContextOptions<RecipesAppContext> options) : base(options) { }
-        //public RecipesAppContext(DbContextOptions options) : base(options) {}
+      //  public RecipesAppContext(DbContextOptions<RecipesAppContext> options) : base(options) { }
+        
         
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Recipe> Recipes { get; set; }
@@ -26,9 +24,16 @@ namespace RecipesApp.Entities
         public DbSet<Review> Review { get; set; }
         public DbSet<ChefRecipe> ChefRecipe { get; set; }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder
+                //Comment/Uncomment when not using/using lazy loading
+                //.UseLazyLoadingProxies() 
+                .UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole()))
+                .UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Initial Catalog=RecipesDatabase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;MultipleActiveResultSets=true");
+        }
 
-            
-        
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
 
