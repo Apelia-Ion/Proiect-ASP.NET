@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,10 +14,11 @@ namespace RecipesApp.Entities
     //Add-Migration
     //Update-Database
 {
-    public class RecipesAppContext : DbContext
+    public class RecipesAppContext : IdentityDbContext<User, Role, string, IdentityUserClaim<string>,
+        UserRole, IdentityUserLogin<string>, IdentityRoleClaim<string>, IdentityUserToken<string>>
     {
         
-      //  public RecipesAppContext(DbContextOptions<RecipesAppContext> options) : base(options) { }
+        public RecipesAppContext(DbContextOptions<RecipesAppContext> options) : base(options) { }
         
         
         public DbSet<Address> Addresses { get; set; }
@@ -24,6 +27,7 @@ namespace RecipesApp.Entities
         public DbSet<Review> Review { get; set; }
         public DbSet<ChefRecipe> ChefRecipe { get; set; }
 
+        /*
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder
@@ -32,10 +36,11 @@ namespace RecipesApp.Entities
                 .UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole()))
                 .UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Initial Catalog=RecipesDatabase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;MultipleActiveResultSets=true");
         }
-
+        */
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            base.OnModelCreating(builder);
 
             //one to one database relationship
             //un bucatar are o adresa

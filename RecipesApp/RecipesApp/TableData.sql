@@ -72,11 +72,28 @@ Reveniti la muschiulet: il feliati cat mai subtire. Feliile vor mai avea o zona 
 Asezati feliile de muschiulet pe un platou larg. Asezati alaturi pico de gallo, presarand putina si pe carne. Asezati langa salsa si piureul de fasolea. Guacamole il asezati in movilite unde mai este loc si decorati cu felii de lime. Presarati putina sare mare pe feliile de muschiulet. Serviti imediat.');
 
 
+insert into ChefRecipe
+values
+('4','2'),
+('5','1');
+
+insert into Review
+Values
+('1', 'Best sweet snack', 5,'5','1');
+
+
+insert into AspNetRoles
+values ('Chef','Chef','CHEF',null),
+('Admin','Admin','ADMIN',null);
+
+
 ----------------------------------------------------------------------------------------------
 select * from Chef;
 select * from Addresses;
 select * from Recipes;
-
+select * from Review;
+select * from AspNetRoles;
+select * from AspNetUsers;
 
 delete from Chef;
 delete from Addresses;
