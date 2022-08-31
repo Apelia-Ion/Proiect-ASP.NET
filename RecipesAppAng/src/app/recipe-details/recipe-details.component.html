@@ -1,0 +1,23 @@
+
+<div *ngIf="recipe">
+    <h2>{{recipe.title | uppercase}} Details</h2>
+    <div><span label class= labelStyle>id: </span>{{recipe.id}}</div>
+    <div>
+      <label class= labelStyle for="recipe-title">Recipe title: </label>
+      <input id="recipe-title" [(ngModel)]="recipe.title" placeholder="Recipe title"/>
+      <div>
+        <label class= labelStyle for="recipe-description">Recipe description: </label>
+      {{recipe.description}}
+      </div>
+      <div>
+        <label class= labelStyle for="recipe-ingredients">Recipe ingredients: </label>
+      {{recipe.ingredients}}
+      </div>
+     
+      <div>
+        <label class= labelStyle for="recipe-steps">Recipe steps: </label>
+      {{recipe.steps}}
+      </div>
+    </div>
+    <button type="button" (click)="goBack()">go back</button>
+  </div>

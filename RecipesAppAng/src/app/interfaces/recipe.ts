@@ -1,4 +1,7 @@
 export interface iRecipe {
-    id: number;
-    name: string;
+    id: string;
+    title: string;
+    ingredients: string;
+    description: string;
+    steps: string;
   }

@@ -4,7 +4,7 @@ import { RecipesComponent } from './recipes.component';
 
 import { iRecipe } from '../interfaces/recipe';
 
-import { RECIPES } from '../mock-data/mock-recipes';
+//import { RECIPES } from '../mock-data/mock-recipes';
 
 describe('RecipesComponent', () => {
   let component: RecipesComponent;

@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { iRecipe } from '../interfaces/recipe';
-import { RECIPES } from '../mock-data/mock-recipes';
+// import { RECIPES } from '../mock-data/mock-recipes';
 import { RecipesService } from '../recipes.service';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-recipes',
@@ -16,17 +17,19 @@ export class RecipesComponent implements OnInit, OnDestroy {
   selectedRecipe?: iRecipe;
 
 
-  constructor(private recipeService:RecipesService) { }
+  constructor(private recipeService:RecipesService, private messageService: MessageService) { }
 
   ngOnInit(): void {
     this.getRecipes();
   }
-  onSelect(recipe: iRecipe): void {
-    this.selectedRecipe = recipe;
-  }
+  // onSelect(recipe: iRecipe): void {
+  //   this.selectedRecipe = recipe;
+  //   this.messageService.add(`HeroesComponent: Selected hero id=${recipe.id}`);
+  // }
 
   getRecipes():void{
-    this.recipes = this.recipeService.getRecipes();
+    this.recipeService.getRecipes().subscribe(recipes =>
+      {this.recipes=recipes;})
   }
   ngOnDestroy(): void {    
   }

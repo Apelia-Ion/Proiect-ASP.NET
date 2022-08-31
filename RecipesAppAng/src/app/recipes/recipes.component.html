@@ -1,4 +1,4 @@
-<h2>My Heroes</h2>
+<!-- <h2>My Heroes</h2>
 <ul class="recipes">
     <li *ngFor="let recipe of recipes" >
     <button [class.selected]="recipe === selectedRecipe" type="button" (click)="onSelect(recipe)" >
@@ -6,6 +6,8 @@
       <span class="name">{{recipe.name}}</span>
     </button>
 </ul>
+
+
 <div *ngIf="selectedRecipe">
     <h2>{{selectedRecipe.name | uppercase}} Details</h2>
     <div>id: {{selectedRecipe.id}}</div>
@@ -13,4 +15,13 @@
       <label for="Recipe-title">Recipe title: </label>
       <input id="Recipe-title" [(ngModel)]="selectedRecipe.name" placeholder="name">
     </div>
-  </div>
+  </div> -->
+
+  <h2>Recipes</h2>
+<ul class="recipes">
+  <li *ngFor="let recipe of recipes">
+    <a routerLink="/details/{{recipe.id}}">
+      <span class="Title">{{recipe.id}}</span> {{recipe.title}}
+    </a>
+  </li>
+</ul>

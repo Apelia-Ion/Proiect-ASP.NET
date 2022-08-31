@@ -1,0 +1,11 @@
+<h2>Chef List</h2>
+<ul class="chefs">
+  <li *ngFor="let chef of chefs">
+    <a routerLink="/details/{{chef.id}}">
+      <span class="Title">{{chef.id}}</span> 
+      {{chef.name}}
+    </a>
+    {{chef.description}}
+    {{chef.culinarySchool}}
+  </li>
+</ul>

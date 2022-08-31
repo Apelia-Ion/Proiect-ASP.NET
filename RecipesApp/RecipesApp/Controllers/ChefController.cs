@@ -24,7 +24,6 @@ namespace RecipesApp.Controllers
 
         // returneaza toti bucatarii din baza de date
         [HttpGet]
-        [Authorize(Policy = "Chef")]
         public async Task<IActionResult> GetChefs()
         {
 

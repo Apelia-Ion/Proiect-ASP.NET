@@ -1,2 +1,11 @@
-<h1> {{title}} </h1>
-<app-recipes></app-recipes>
+<h1>{{title}}</h1>
+<nav>
+  <a routerLink="/Welcome">HOME</a>
+  <a routerLink="/recipes">Recipes</a>
+  <a routerLink="/chefs">Chefs</a>
+  <a routerLink="/reviews/reviews">Reviews</a>
+  <a routerLink="/register/register">Register</a>
+  <a routerLink="/login/login">Login</a>
+</nav>
+<router-outlet></router-outlet>
+<app-messages></app-messages>

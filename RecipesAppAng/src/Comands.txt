@@ -1,1 +1,8 @@
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+
+ng serve --o
+
+
+ng generate service 
+
+ng generate component

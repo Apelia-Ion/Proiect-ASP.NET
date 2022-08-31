@@ -18,16 +18,24 @@ namespace RecipesApp.Controllers
             this.manager = recipeManager;
         }
 
-       
+
         // returneaza toate retetele din baza de date
         [HttpGet]
-        [Authorize(Policy = "Chef")]
         public async Task<IActionResult> GetRecipes()
         {
 
             var recipes = manager.GetRecipes();
             return Ok(recipes);
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById([FromRoute] string id)
+        {
+            var chef = manager.GetRecipeById(id);
+
+            return Ok(chef);
+        }
+
 
         //returneaza o lista cu reteta a carui id a fost dat si review-urile acesteia
         [HttpGet("id")]
