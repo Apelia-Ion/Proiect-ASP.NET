@@ -1,6 +1,6 @@
 # Proiect-ASP.NET
 
-This the final project for the optional course of web application development at the Faculty of Mathematics and Informatics, Unibuc. The project was built using .Net and Angular.  
+This is the final project for the optional course of web application development at the Faculty of Mathematics and Informatics, Unibuc. The project was built using .Net and Angular.  
 
 
 
